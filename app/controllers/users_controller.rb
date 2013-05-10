@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
+      sign_in @user
       flash[:success] = "Welcome to a better life!"
       redirect_to @user
     else
@@ -18,4 +19,6 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+  end
 end
